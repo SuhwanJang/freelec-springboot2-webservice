@@ -12,11 +12,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Getter
+@Table(name = "users")
 @NoArgsConstructor
 @Entity
 public class User extends BaseTimeEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -45,12 +48,11 @@ public class User extends BaseTimeEntity {
   public User update(String name, String picture) {
     this.name = name;
     this.picture = picture;
+
     return this;
   }
 
   public String getRoleKey() {
     return this.role.getKey();
   }
-
-
 }
